@@ -1,0 +1,8 @@
+domain: doc.example.dev
+port: 3000
+books:
+  - name: cooking
+  - name: sekret
+    basicAuth:
+      - name: foo
+        password: bar

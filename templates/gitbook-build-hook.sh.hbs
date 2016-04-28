@@ -1,0 +1,32 @@
+
+# each stdin line contains OLD-VALUE NEW-VALUE REF-NAME
+#while read line; do
+#  echo "reading: ${line}"
+#done < /dev/stdin
+
+NAME="{{ name }}"
+REPO_DIR=`pwd`
+TMP_DIR=`mktemp -d`
+DIST_DIR="/gitbooks-dist/${NAME}"
+CACHE_DIR="/gitbooks-cache/{{ name }}"
+
+cd $TMP_DIR
+git clone $REPO_DIR repo
+
+cd $TMP_DIR/repo
+
+if [ ! -d "$CACHE_DIR/node_modules" ]; then
+  mkdir -p "$CACHE_DIR/node_modules"
+fi
+
+ln -s "$CACHE_DIR/node_modules" node_modules
+
+gitbook build
+
+if [ -d "${DIST_DIR}" ]; then
+  mv "${DIST_DIR}" "${TMP_DIR}/old"
+fi
+
+mv _book "${DIST_DIR}" || mv "${TMP_DIR}/old" "${DIST_DIR}"
+
+rm -fr "$TMP_DIR"
