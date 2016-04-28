@@ -1,4 +1,4 @@
-domain: doc.example.dev
+domain: localhost
 port: 3000
 books:
   - name: cooking
