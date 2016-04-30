@@ -33,8 +33,8 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Run nginx.
-RUN mkdir /etc/service/nginx
-ADD docker/start-nginx.sh /etc/service/nginx/run
+RUN mkdir /etc/service/gitbook-server
+ADD docker/start-server.sh /etc/service/gitbook-server/run
 
 # Clean caches.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

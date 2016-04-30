@@ -1,0 +1,8 @@
+# common options
+repos: /gitbooks
+dist: /gitbooks-dist
+caches: /gitbooks-cache
+
+# start options
+port: 80
+pid: /var/run/gitbook-server.pid
