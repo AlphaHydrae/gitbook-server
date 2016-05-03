@@ -12,8 +12,8 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 # Install Node.
 RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 
-# Install Git, nginx and Node.js.
-RUN apt-get install -y git nginx nodejs build-essential
+# Install Git and Node.js.
+RUN apt-get install -y git nodejs build-essential
 
 # Install GitBook.
 RUN npm install -g gitbook-cli
