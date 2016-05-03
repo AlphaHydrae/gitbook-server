@@ -26,13 +26,9 @@ ADD bin /opt/gitbook-server/bin
 ADD lib /opt/gitbook-server/lib
 ADD templates /opt/gitbook-server/templates
 RUN echo "export PATH=/opt/gitbook-server/bin:$PATH" >> /root/.bashrc
-ADD docker/add-public-keys.sh docker/update-gitbook-server.sh /etc/my_init.d/
+ADD docker/add-public-keys.sh /etc/my_init.d/
 
-# Forward nginx request and error logs to docker log collector
-RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
-
-# Run nginx.
+# Run gitbook-server with runit.
 RUN mkdir /etc/service/gitbook-server
 ADD docker/start-server.sh /etc/service/gitbook-server/run
 

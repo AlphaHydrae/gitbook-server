@@ -5,12 +5,10 @@
   "engines": {
     "node": "4.x"
   },
-  "scripts": {
-    "start": "node lib/express.js"
-  },
   "dependencies": {
     "bluebird": "^3.3.5",
     "body-parser": "^1.15.0",
+    "checksum": "^0.1.1",
     "commander": "^2.9.0",
     "express": "^4.13.4",
     "fs-extra": "^0.29.0",
